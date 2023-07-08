@@ -1,4 +1,5 @@
 package com.zipcodewilmington;
+import java.util.*;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,6 +12,8 @@ public class RemovePackDuplicatesTest {
         String[] array = {"a", "a", "a", "b", "c", "c", "a", "a", "d"};
         String[] expected = {"aaa", "b", "cc", "aa", "d"};
         String[] actual = StringArrayUtils.packConsecutiveDuplicates(array);
+
+        //System.out.print(Arrays.toString(actual));
         Assert.assertEquals(expected, actual);
     }
 

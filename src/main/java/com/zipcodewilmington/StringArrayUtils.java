@@ -124,7 +124,14 @@ public class StringArrayUtils {
      * @return number of occurrences the specified `value` has occurred
      */ // TODO
     public static int getNumberOfOccurrences(String[] array, String value) {
-        return 0;
+        int counter = 0;
+
+        for (String element : array) {
+            if (element.equals(value)) {
+                counter++;
+            }
+        }
+        return counter;
     }
 
     /**
@@ -133,7 +140,17 @@ public class StringArrayUtils {
      * @return array with identical contents excluding values of `value`
      */ // TODO
     public static String[] removeValue(String[] array, String valueToRemove) {
-        return null;
+        int newArraySize = (array.length - getNumberOfOccurrences(array, valueToRemove));
+        String[] newArray = new String[newArraySize];
+        int counter = 0;
+
+        for (int i = 0; i < array.length; i++){
+            if (!array[i].equals(valueToRemove)){
+                newArray[counter] = array[i];
+                counter++;
+            }
+        }
+        return newArray;
     }
 
     /**
@@ -141,7 +158,18 @@ public class StringArrayUtils {
      * @return array of Strings with consecutive duplicates removes
      */ // TODO
     public static String[] removeConsecutiveDuplicates(String[] array) {
-        return null;
+
+        List<String> newList = new ArrayList<String>();
+        newList.add(array[0]);
+
+        for (int i = 1; i<array.length; i++){
+            if (!array[i].equals(array[i-1])) {
+                newList.add(array[i]);
+            }
+
+        }
+       String[] newArray = new String[newList.size()];
+       return newList.toArray(newArray);
     }
 
     /**
@@ -149,7 +177,17 @@ public class StringArrayUtils {
      * @return array of Strings with each consecutive duplicate occurrence concatenated as a single string in an array of Strings
      */ // TODO
     public static String[] packConsecutiveDuplicates(String[] array) {
-        return null;
+        String[] condensedArray = removeConsecutiveDuplicates(array);
+        int counter = 0;
+        for (int i=0; i<array.length-1; i++) {
+            if (array[i].equals(array[i+1])) {
+                condensedArray[counter]+= array[i];
+            } else {
+                counter++;
+            }
+        }
+
+        return condensedArray;
     }
 
 

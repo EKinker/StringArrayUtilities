@@ -1,4 +1,5 @@
 package com.zipcodewilmington;
+import java.util.*;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,6 +13,9 @@ public class GetConsecutiveDuplicatesTest {
         String[] array = {"aba", "aba", "baa", "bab", "bba", "bba", "bba", "bba", "bbb", "bbb"};
         String[] actual = StringArrayUtils.removeConsecutiveDuplicates(array);
         String[] expected = {"aba", "baa", "bab", "bba", "bbb"};
+
+       //System.out.print(Arrays.toString(actual));
+
         Assert.assertEquals(actual, expected);
     }
 

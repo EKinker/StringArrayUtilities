@@ -30,5 +30,17 @@ public class ReverseTest {
         String[] actual = StringArrayUtils.reverse(StringArrayUtils.reverse(expected));
         Assert.assertEquals(expected, actual);
     }
+/* //testing if array reverses correctly
+    @Test
+    public void testReverse4() {
+        String[] array = {"Is this a plaindrome?", "This is not a plaindrome", "Is this a palindrome?", "This is not a palindrome"};
+        String[] expected = {"a"};
+        String[] actual = StringArrayUtils.reverse(array);
+        for (String element : actual) { System.out.println(element);}
 
+
+
+        //Assert.assertEquals(expected, actual);
+    }
+*/
 }

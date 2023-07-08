@@ -1,4 +1,10 @@
+
+
+
+
 package com.zipcodewilmington;
+
+import java.util.*;
 
 /**
  * Created by leon on 1/29/18.
@@ -25,7 +31,8 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        return null;
+
+        return array[array.length-1];
     }
 
     /**
@@ -33,7 +40,8 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-        return null;
+
+        return array[array.length-2];
     }
 
     /**
@@ -42,7 +50,18 @@ public class StringArrayUtils {
      * @return true if the array contains the specified `value`
      */ // TODO
     public static boolean contains(String[] array, String value) {
-        return false;
+        /* //this works as a for loop.  I'd like to try another way
+        boolean containsVal = false;
+
+        for (String val : array) {
+            if (val.equals(value)) {
+                containsVal = true;
+            }
+        }
+        return containsVal;
+
+         */
+        return Arrays.asList(array).contains(value);  // 1-liner.  Convert to list and return true if contains value.
     }
 
     /**
@@ -50,7 +69,27 @@ public class StringArrayUtils {
      * @return an array with identical contents in reverse order
      */ // TODO
     public static String[] reverse(String[] array) {
-        return null;
+       /* //longer way.
+        List<String> listToReverse = Arrays.asList(array);  // converts Array to List
+        Collections.reverse(listToReverse); // reverse list using Collections method
+
+        return listToReverse.toArray(array); //return array converted from list
+
+         */
+
+        /*
+        Collections.reverse(Arrays.asList(array));
+        return array;   //this method does not work in the palindrome section.  It seems to re-write the original array
+        */
+
+        String[] reversedList = new String[array.length];
+        int newArrInd = 0;
+        for (int i = array.length-1; i>=0; i --){
+            reversedList[newArrInd] = array[i];
+            newArrInd++;
+
+        }
+        return reversedList;
     }
 
     /**
@@ -58,7 +97,9 @@ public class StringArrayUtils {
      * @return true if the order of the array is the same backwards and forwards
      */ // TODO
     public static boolean isPalindromic(String[] array) {
-        return false;
+
+
+        return Arrays.equals(array, reverse(array));
     }
 
     /**
@@ -66,7 +107,15 @@ public class StringArrayUtils {
      * @return true if each letter in the alphabet has been used in the array
      */ // TODO
     public static boolean isPangramic(String[] array) {
-        return false;
+        String arrToStr = Arrays.toString(array).toLowerCase();  // convert array to lowercase string
+        boolean isPangramic = true;
+
+        for (char i ='a'; i <= 'z'; i ++){  //loop through all characters a-z
+            if (!arrToStr.contains(String.valueOf(i))) {  //if the string does not contain the char value for each letter
+                isPangramic = false;   //it won't be a pangram
+            }
+        }
+        return isPangramic;
     }
 
     /**
